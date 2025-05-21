@@ -19,7 +19,7 @@ class MNISTNet(nn.Module):
         self.features = ConvBNReLU(1, 32, kernel_size=3, padding=1)
         # classifier: Conv2d 레이어 하나
         # 입력 feature map은 32채널, 크기 28×28 → kernel_size=28로 해 두면 1×1 출력
-        self.classifier = nn.Conv2d(32, num_classes, kernel_size=28, bias=True)
+        self.classifier = nn.Conv2d(32, num_classes, kernel_size=(24, 26), bias=True)
 
     def forward(self, x):
         x = self.features(x)           # [B,32,28,28]
