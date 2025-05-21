@@ -5,7 +5,7 @@ class ConvBNReLU(nn.Sequential):
         super().__init__(
             nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding, bias=False),
             nn.BatchNorm2d(out_channels),
-            nn.Conv2d(out_channels, out_channels, kernel_size=kernel_size,
+            nn.Conv2d(out_channels, out_channels, kernel_size=(3,1),
             padding=padding, groups=out_channels, bias=False),
             SubSpectralNorm(out_channels, 4),
             
