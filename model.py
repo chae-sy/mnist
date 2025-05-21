@@ -3,7 +3,7 @@ import torch.nn as nn
 class ConvBNReLU(nn.Sequential):
     def __init__(self, in_channels, out_channels, kernel_size, stride=1, padding=0):
         super().__init__(
-            nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding, bias=False),
+            nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding, bias=False, groups=in_channels),
             SubSpectralNorm(out_channels, 4),
             
             nn.ReLU(inplace=True)
